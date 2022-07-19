@@ -1,9 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 
 const ProductImages = ({ images = [{ url: "" }] }) => {
     const [main, setMain] = useState(images[0]);
+    // console.log(images[0]);
     // console.log(main);
+
+    useEffect(() => {
+        if (images[0].url !== "") {
+            setMain(images[0]);
+        }
+    }, [images[0].url]);
+
     return (
         <Wrapper>
             <img src={main.url} alt="main image" className="main" />
